@@ -5,7 +5,8 @@
   "main": "BlurGradientBg.js",
   "scripts": {
     "start": "http-server",
-    "dev": "http-server"
+    "dev": "http-server",
+    "build": "chmod +x vercel.build.sh && ./vercel.build.sh"
   },
   "keywords": [],
   "author": "",

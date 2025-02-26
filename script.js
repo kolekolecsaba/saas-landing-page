@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         templateGrid.innerHTML = window.templateData.map(template => `
             <div class="template-card" data-category="${template.category}" style="display: ${template.category === 'welcome' ? 'block' : 'none'}">
                 <div class="template-preview">
-                    <img src="/imgs/templates/${template.image}" alt="${template.title}">
+                    <img src="./imgs/templates/${template.image}" alt="${template.title}">
                     <div class="template-overlay">
                         <button class="btn btn-primary preview-btn">Preview Template</button>
                     </div>
@@ -119,49 +119,46 @@ document.addEventListener('DOMContentLoaded', () => {
 // Keep only these necessary functions
 function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navButtons = document.querySelector('.nav-buttons');
     const body = document.body;
+    let mobileMenu = document.querySelector('.mobile-menu');
 
-    if (!hamburger) return;
+    // Create mobile menu if it doesn't exist
+    if (!mobileMenu) {
+        mobileMenu = document.createElement('div');
+        mobileMenu.className = 'mobile-menu';
+        const navMenu = document.querySelector('.nav-menu').cloneNode(true);
+        const navButtons = document.querySelector('.nav-buttons').cloneNode(true);
+        mobileMenu.appendChild(navMenu);
+        mobileMenu.appendChild(navButtons);
+        body.appendChild(mobileMenu);
 
-    hamburger.addEventListener('click', () => {
-        // Toggle active class on hamburger
-        hamburger.classList.toggle('active');
-        
-        // Create mobile menu container if it doesn't exist
-        let mobileMenuContainer = document.querySelector('.mobile-menu-container');
-        
-        if (!mobileMenuContainer) {
-            mobileMenuContainer = document.createElement('div');
-            mobileMenuContainer.className = 'mobile-menu-container';
-            
-            // Clone navigation items
-            const navMenuClone = navMenu.cloneNode(true);
-            const navButtonsClone = navButtons.cloneNode(true);
-            
-            mobileMenuContainer.appendChild(navMenuClone);
-            mobileMenuContainer.appendChild(navButtonsClone);
-            
-            // Append to body
-            body.appendChild(mobileMenuContainer);
-            
-            // Add event listeners to mobile menu links
-            const mobileLinks = mobileMenuContainer.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    mobileMenuContainer.classList.remove('active');
-                    body.classList.remove('no-scroll');
-                });
+        // Add click handlers to mobile menu links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
             });
-        }
-        
-        // Toggle mobile menu visibility
-        mobileMenuContainer.classList.toggle('active');
-        
-        // Prevent body scrolling when menu is open
+        });
+    }
+
+    function toggleMobileMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
         body.classList.toggle('no-scroll');
+    }
+
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        body.classList.remove('no-scroll');
+    }
+
+    hamburger.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu on wider screens
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMobileMenu();
+        }
     });
 }
 

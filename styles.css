@@ -289,6 +289,63 @@ section {
     background-color: var(--dark);
 }
 
+/* Mobile Menu Styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 999;
+    padding: 80px 20px 20px;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.mobile-menu .nav-menu li {
+    text-align: center;
+}
+
+.mobile-menu .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-menu .nav-link {
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
 /* ===== Hero Section ===== */
 .hero {
     padding: calc(var(--spacing-xxxl) * 2) 0 var(--spacing-xxxl);
@@ -832,7 +889,7 @@ input:checked + .slider:before {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var (--spacing-md);
 }
 
 .faq-item {
@@ -1124,6 +1181,269 @@ input:checked + .slider:before {
 
     .footer-links {
         justify-content: center;
+    }
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 768px) {
+    /* Container padding adjustment */
+    .container {
+        padding: 0 20px;
+    }
+
+    /* Hero Section Mobile */
+    .hero {
+        padding: 100px 0 40px; /* Adjusted top padding */
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .hero .container {
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        line-height: 1.3;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .hero-title-main,
+    .hero-title-sub {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 20px auto;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 280px; /* Reduced from 300px */
+        margin: 30px auto;
+    }
+
+    .hero-stats {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+        padding: 0 15px;
+    }
+
+    .stat {
+        width: 100%;
+        text-align: center;
+        padding: 15px 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+    }
+
+    .hero-image {
+        width: 100%;
+        height: auto;
+        margin: 20px auto 0;
+        padding: 0;
+        max-height: 400px; /* Control maximum height on mobile */
+        position: relative;
+    }
+
+    .hero-img {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-width: 300px; /* Control maximum width */
+        margin: 0 auto;
+        border-radius: 12px;
+        transform: perspective(600px) rotateY(0) rotateX(0); /* Remove 3D effect on mobile */
+    }
+
+    .hero-img.active {
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Adjust button sizes for better mobile experience */
+    .btn-large {
+        padding: 12px 24px;
+        font-size: 16px;
+        width: 100%;
+    }
+}
+
+/* Additional mobile tweaks for smaller screens */
+@media screen and (max-width: 480px) {
+    .hero-stats {
+        grid-template-columns: 1fr;  /* Stack stats vertically on very small screens */
+    }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Container padding adjustment */
+    .container {
+        padding: 0 20px;
+    }
+
+    /* Hero Section Mobile */
+    .hero {
+        padding: 60px 0 40px;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        line-height: 1.3;
+    }
+
+    .hero-title-main,
+    .hero-title-sub {
+        display: block;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 20px auto;
+        max-width: 90%;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 300px;
+        margin: 30px auto;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .stat {
+        width: calc(50% - 20px);
+        text-align: center;
+        padding: 15px;
+    }
+
+    .hero-image {
+        width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+
+    .hero-img {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 12px;
+    }
+
+    /* Features Section Mobile */
+    .features {
+        padding: 60px 0;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+
+    .section-header p {
+        font-size: 16px;
+        line-height: 1.6;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .feature-card {
+        padding: 25px 20px;
+        text-align: center;
+    }
+
+    .feature-icon {
+        margin: 0 auto 15px;
+    }
+
+    .feature-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+}
+
+/* Additional mobile tweaks */
+@media screen and (max-width: 480px) {
+    .hero-stats {
+        flex-direction: column;
+    }
+
+    .stat {
+        width: 100%;
+    }
+
+    .stat-number {
+        font-size: 32px;
+    }
+
+    .stat-label {
+        font-size: 14px;
     }
 }
 
