@@ -4,7 +4,7 @@
       { "src": "*", "use": "@vercel/static" }
     ],
     "routes": [
-      { "src": "/imgs/(.*)", "dest": "/imgs/$1" },
+      { "src": "/imgs/(.*)", "dest": "/public/imgs/$1" },
       { "src": "/(.*)", "dest": "/$1" }
     ]
   }
