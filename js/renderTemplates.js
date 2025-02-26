@@ -1,4 +1,5 @@
-import templateData from './templateData.js';
+// Use the global templateData variable
+// import templateData from './templateData.js';
 
 function renderTemplateCards() {
     const swiperWrapper = document.querySelector('.swiper-wrapper');
@@ -95,4 +96,6 @@ function initTemplateFilters() {
     });
 }
 
-export { renderTemplateCards, initTemplateFilters };
+// Make functions available globally
+window.renderTemplateCards = renderTemplateCards;
+window.initTemplateFilters = initTemplateFilters;

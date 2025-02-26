@@ -1,12 +1,19 @@
 {
     "version": 2,
+    "public": true,
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "github": {
+      "silent": true
+    },
     "builds": [
-      { "src": "*", "use": "@vercel/static", "config": { "distDir": "." } }
+      { "src": "*", "use": "@vercel/static" }
     ],
     "routes": [
       { "handle": "filesystem" },
       { "src": "/imgs/(.*)", "dest": "/imgs/$1" },
-      { "src": "/(.*)", "dest": "/" }
+      { "src": "/js/(.*)", "dest": "/js/$1" },
+      { "src": "/(.*)", "dest": "/$1" }
     ],
     "buildCommand": "chmod +x vercel.build.sh && ./vercel.build.sh"
   }
