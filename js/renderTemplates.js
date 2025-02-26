@@ -23,7 +23,7 @@ function renderTemplateCards() {
         const slideContent = group.map(template => `
             <div class="template-card" data-category="${template.category}">
                 <div class="template-preview">
-                    <img src="./imgs/templates/${template.image}" alt="${template.title}">
+                    <img src="/imgs/templates/${template.image}" alt="${template.title}">
                     <div class="template-overlay">
                         <button class="btn btn-primary preview-btn">Preview Template</button>
                     </div>
