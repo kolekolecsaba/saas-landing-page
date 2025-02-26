@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const templateCard = `
                 <div class="template-card" data-category="${template.category}" style="display: ${template.category === 'welcome' ? 'block' : 'none'}">
                     <div class="template-preview">
-                        <img src="./imgs/templates/${template.image}" alt="${template.title}" 
+                        <img src="${template.image}" alt="${template.title}" 
                              onerror="this.onerror=null; console.log('Failed to load image:', this.src);">
                         <div class="template-overlay">
                             <button class="btn btn-primary preview-btn">Preview Template</button>

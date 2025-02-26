@@ -2,7 +2,7 @@ if (typeof window !== 'undefined') {
     window.templateData = [
         // Welcome Series Templates (3)
         {
-            image: "CleanShot 2025-01-27 at 19.04.06@2x 2.png",
+            image: "/imgs/templates/CleanShot 2025-01-27 at 19.04.06@2x 2.png",
             category: "welcome",
             title: "Welcome Onboarding",
             description: "Initial welcome message with brand introduction"
@@ -80,7 +80,4 @@ if (typeof window !== 'undefined') {
             description: "Celebration offer for customer milestones"
         }
     ];
-
-    // Add debug logging
-    console.log('Template data loaded:', window.templateData);
 }
